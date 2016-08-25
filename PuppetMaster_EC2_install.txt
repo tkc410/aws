@@ -32,6 +32,28 @@ Create new VPC and launch Vms to that VPC
             } 
 
 
-    
-    
+
+History of commands that i used in master
+
+    1  vi /etc/hosts
+    2  ipconfig
+    3  ifconfig
+    4  hostname puppet.example.com
+    5  vi /etc/hosts
+    6  sudo apt-get update -y
+    7  sudo wget http://apt.puppetlabs.com/puppetlabs-release-trusty.deb
+    8  sudo dpkg -i puppetlabs-release-trusty.deb
+    9  sudo apt-get update -y
+   10  sudo apt-get -y install puppetmaster
+   11  vi /etc/puppet/puppet.conf
+   12  sudo touch /etc/puppet/manifests/site.pp
+   13  service puppetmaster restart
+   14  puppet cert list -all
+   15  puppet cert sign puppetagent.example.com
+   16  puppet cert sign puppet.example.com
+   17  puppet cert list -all
+   18  vi /etc/puppet/manifests/site.pp
+   19  cat /etc/puppet/manifests/site.pp
+   20  cat /etc/puppet/puppet.conf
+
   
