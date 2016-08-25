@@ -13,5 +13,32 @@ Create new VPC and launch Vms to that VPC
     sudo apt-get -y install puppet
 4) Edit /etc/puppet/puppet.conf file and add the following line in there before [master] 
     server = puppet.example.com
-5) By default puppet agent is not configured to start, 
-So, At puppet agent, also edit /etc/default/puppet and set start = yes  
+5) By default puppet agent is not configured to start, So, At puppet agent, 
+    edit /etc/default/puppet and set start = yes  
+6)  At agent node, start the puppet service
+        service puppet restart
+7) Go to master and edit site.pp file and come back agent and run the following command to see 
+    puppet agent --onetime --no-daemonize --verbose
+    Above manifest [site.pp], if applied successfully, will create a file at /tmp/sharadfile with file content as “This is first file created by puppet”. 
+    
+
+
+root history of commands that i ran on agent. 
+    1  hostname puppetagent.example.com
+    2  vi /etc/hosts
+    3  cat /etc/hosts
+    4  host  puppet.example.com
+    5  ping  puppet.example.com
+    6  sudo apt-get update -y
+    7  sudo wget http://apt.puppetlabs.com/puppetlabs-release-trusty.deb\
+    8  sudo wget http://apt.puppetlabs.com/puppetlabs-release-trusty.deb
+    9  sudo dpkg -i puppetlabs-release-trusty.deb
+   10  sudo apt-get update -y
+   11  sudo apt-get -y install puppet
+   12  vi /etc/puppet/puppet.conf
+   13  vi /etc/default/puppet
+   14  service puppet restart
+   15  puppet agent -onetime -no-daemonize -verbose
+   16  puppet agent --onetime --no-daemonize --verbose
+   17  cat /tmp/sharadfile
+
