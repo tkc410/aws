@@ -1,1 +1,17 @@
 
+Create new VPC and launch Vms to that VPC
+1) Set Hostname for agent 
+    hostname puppetagent.example.com ===> On agent
+2) set /etc/hosts on both master and Agent
+    10.0.0.137 puppet.example.com
+    10.0.0.45 puppetagent.example.com
+3) Install Puppet agent with following commands
+    sudo apt-get update -y 
+    sudo wget http://apt.puppetlabs.com/puppetlabs-release-trusty.deb 
+    sudo dpkg -i puppetlabs-release-trusty.deb 
+    sudo apt-get update -y 
+    sudo apt-get -y install puppet
+4) Edit /etc/puppet/puppet.conf file and add the following line in there before [master] 
+    server = puppet.example.com
+5) By default puppet agent is not configured to start, 
+So, At puppet agent, also edit /etc/default/puppet and set start = yes  
