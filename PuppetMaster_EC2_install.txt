@@ -1,0 +1,18 @@
+Create new VPC and launch Vms to that VPC
+1) Set Hostname for both master and agent 
+    hostname puppet.example.com  ===>on Master
+    hostname puppetagent.example.com ===> On agent
+2) set /etc/hosts on both master and Agent
+    10.0.0.137 puppet.example.com
+    10.0.0.45 puppetagent.example.com
+3) Install Puppet master with following commands
+    sudo apt-get update -y
+    sudo wget http://apt.puppetlabs.com/puppetlabs-release-trusty.deb 
+    sudo dpkg -i puppetlabs-release-trusty.deb # sudo apt-get update -y 
+    sudo apt-get -y install puppetmaster 
+4) Edit /etc/puppet/puppet.conf file and add the following line in there before [master] 
+    certname = puppet.example.com
+5) Create new file site.pp 
+    sudo touch /etc/puppet/manifests/site.pp
+    
+  
