@@ -14,5 +14,24 @@ Create new VPC and launch Vms to that VPC
     certname = puppet.example.com
 5) Create new file site.pp 
     sudo touch /etc/puppet/manifests/site.pp
+6) Start the puppet master service
+    service puppetmaster restart
+7) Install Puppet agent and start [use the PuppetAgent_EC2_install file to install]
+8) certification 
+    1)If the request is received, we need to sign the request using following command 
+    puppet cert list -all
+    puppet cert sign puppetagent.example.com
+    2)If request is not visible on the master, then go to agent and check all the configurations from the beginning, correct the errors (if any) and then again run following command, # rm -rf /var/lib/puppet/ssl    (This command will delete previously generated requests) # service puppet restart   
+
+
+9)  After successful signing of request, there should appear a + symbol as shown below. If symbol has not appeared, that means request is not signed yet 
+10) After successful completion of master and agent installation, configuration and authentication, it’s time to test the setup by running a small manifest. Steps to test the setup, 1) At master, edit /etc/puppet/manifests/site.pp file and copy and paste below code, save and exit. 
+        file{‘/tmp/sharadfile': 
+                ensure => present, 
+                content => “This is first file created by puppet\n” 
+            } 
+
+
+    
     
   
